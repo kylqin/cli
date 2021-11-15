@@ -1,0 +1,28 @@
+{
+  "name": "tpl",
+  "version": "0.0.1",
+  "description": "A Command-line tool to create Folder/File Templates and generate folders or files from these templates.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kylqin/tpl.git"
+  },
+  "keywords": [
+    "tpl",
+    "template",
+    "cli"
+  ],
+  "author": "kylqin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kylqin/tpl/issues"
+  },
+  "homepage": "https://github.com/kylqin/tpl#readme",
+  "devDependencies": {
+    "typescript": "^4.4.4"
+  }
+}
