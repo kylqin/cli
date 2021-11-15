@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "A Command-line tool to create Folder/File Templates and generate folders or files from these templates.",
   "main": "index.js",
+  "bin": {
+    "tpl": "bin/tpl"
+  },
   "scripts": {
     "build": "tsc",
     "test": "test"
