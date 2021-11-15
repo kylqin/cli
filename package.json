@@ -1,5 +1,5 @@
 {
-  "name": "tpl",
+  "name": "@kylqin/tpl",
   "version": "0.0.1",
   "description": "A Command-line tool to create Folder/File Templates and generate folders or files from these templates.",
   "main": "index.js",
@@ -19,6 +19,10 @@
     "template",
     "cli"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "author": "kylqin",
   "license": "ISC",
   "bugs": {
