@@ -1,7 +1,7 @@
 import * as os from 'os';
 import {ensureFile, pathExists, readFile, readJson, writeJson} from "fs-extra";
-import {envStr} from "./env-string";
-import untildify = require("untildify");
+import {envStr} from "@/utils/env-string";
+import untildify from "untildify";
 import Dict = NodeJS.Dict;
 
 const homeDir = os.homedir();

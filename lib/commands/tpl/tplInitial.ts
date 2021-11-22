@@ -1,11 +1,11 @@
-import {confFileExists, confFilePath, ensureConfFile, readConf, writeConf} from "../../utils/conf";
+import {confFileExists, confFilePath, ensureConfFile, readConf, writeConf} from "@/utils/conf";
 import {green} from "chalk";
 import * as os from "os";
 import {ensureDir, pathExists} from "fs-extra";
 import * as path from "path";
 import * as inquirer from "inquirer";
 import {Question} from "inquirer";
-import {L} from "../../utils/log";
+import {L} from "@/utils/log";
 import untildify = require("untildify");
 
 interface TplInitialOptions {

@@ -1,7 +1,7 @@
 import Conf from "conf";
-import {TodoItem} from "./list";
+import {TodoItem} from "@/commands/list";
 import * as chalk from "chalk";
-import {L} from "../utils/log";
+import {L} from "@/utils/log";
 
 interface MarkDoneOptions {
   tasks: string[]

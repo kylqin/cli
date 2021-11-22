@@ -1,9 +1,8 @@
 import {program} from "commander";
 
-import {list} from './commands/list';
-import {add} from './commands/add';
-import {markDone} from './commands/markDone';
-
+import {list} from '@/commands/list';
+import {add} from '@/commands/add';
+import {markDone} from '@/commands/markDone';
 
 program
   .command('l')

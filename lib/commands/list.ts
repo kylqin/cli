@@ -1,6 +1,6 @@
 import Conf from "conf";
 import * as chalk from "chalk";
-import {L} from "../utils/log";
+import {L} from "@/utils/log";
 
 const conf = new Conf();
 

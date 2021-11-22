@@ -1,4 +1,4 @@
-import {L} from "../../utils/log";
+import {L} from "@/utils/log";
 import {blue} from "chalk";
 
 export function generateWithTemplate(template: string) {

@@ -1,8 +1,8 @@
 import * as chalk from "chalk";
 import {red} from "chalk";
-import {L} from "../../utils/log";
-import {readConf} from "../../utils/conf";
-import {TplConf} from "./tplInitial";
+import {L} from "@/utils/log";
+import {readConf} from "@/utils/conf";
+import {TplConf} from "@/commands/tpl/tplInitial";
 import * as path from "path";
 import {ensureFile, pathExists, writeJson} from "fs-extra";
 

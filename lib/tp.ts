@@ -1,9 +1,9 @@
 import {program} from "commander";
 
-import {tplInitial} from './commands/tpl/tplInitial';
-import {touchConf} from './commands/tpl/touchConf';
-import {newTemplate} from './commands/tpl/newTemplate';
-import {generateWithTemplate} from './commands/tpl/generateWithTemplate';
+import {tplInitial} from '@/commands/tpl/tplInitial';
+import {touchConf} from '@/commands/tpl/touchConf';
+import {newTemplate} from '@/commands/tpl/newTemplate';
+import {generateWithTemplate} from '@/commands/tpl/generateWithTemplate';
 
 program
   .command('init')
