@@ -1,5 +1,5 @@
 import Conf from "conf";
-import {TodoItem} from "@/commands/list";
+import {TodoItem} from "@/todo/commands/list";
 import * as chalk from "chalk";
 import {L} from "@/utils/log";
 
