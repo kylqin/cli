@@ -1,9 +1,12 @@
 import {program} from "commander";
 
-import {tplInitial} from '@/tpl/commands/tplInitial';
+import {provideCnf} from "@/utils/di";
+import {readConf} from "@/utils/conf";
+import {TplConf, tplInitial} from '@/tpl/commands/tplInitial';
 import {touchConf} from '@/tpl/commands/touchConf';
 import {newTemplate} from '@/tpl/commands/newTemplate';
-import {generateWithTemplate} from '@/tpl/commands/generateWithTemplate';
+import {generate} from '@/tpl/commands/generate';
+import {editTemplate} from "@/tpl/commands/editTemplate";
 
 program
   .command('init')
@@ -22,9 +25,18 @@ program
   .action(newTemplate)
 
 program
+  .command('edit <template>')
+  .description('编辑模板配置')
+  .action(editTemplate)
+
+program
   .command('g <template>')
   .description('从模板生成')
-  .action(generateWithTemplate)
+  .action(generate)
 
+readConf('tpl')
+  .then(cnf => {
+    provideCnf<TplConf>(cnf);
 
-program.parse();
+    program.parse();
+  });
