@@ -3,7 +3,7 @@ import {program} from "commander";
 import {tplInitial} from '@/tpl/commands/tplInitial';
 import {touchConf} from '@/tpl/commands/touchConf';
 import {newTemplate} from '@/tpl/commands/newTemplate';
-import {generateWithTemplate} from '@/tpl/commands/generateWithTemplate';
+import {generate} from '@/tpl/commands/generate';
 
 program
   .command('init')
@@ -24,7 +24,7 @@ program
 program
   .command('g <template>')
   .description('从模板生成')
-  .action(generateWithTemplate)
+  .action(generate)
 
 
 program.parse();
