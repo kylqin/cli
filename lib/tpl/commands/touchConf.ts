@@ -1,8 +1,10 @@
 import * as chalk from "chalk";
 import * as os from 'os';
-import {ensureFile, pathExists, readJson, writeJson} from "fs-extra";
-import {confFilePath} from "@/utils/conf";
-import {L} from "@/utils/log";
+import fse from "fs-extra";
+import {confFilePath} from "@/utils/conf.js";
+import {L} from "@/utils/log.js";
+
+const {ensureFile, pathExists, readJson, writeJson} = fse;
 
 const homeDir = os.homedir();
 

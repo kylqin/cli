@@ -1,10 +1,9 @@
-import * as chalk from "chalk";
-import {red} from "chalk";
-import {L} from "@/utils/log";
-import {readConf} from "@/utils/conf";
-import {TplConf} from "@/tpl/commands/tplInitial";
+import chalk from "chalk";
+import {L} from "@/utils/log.js";
+import {readConf} from "@/utils/conf.js";
+import {TplConf} from "@/tpl/commands/tplInitial.js";
 import * as path from "path";
-import {ensureFile, pathExists, writeJson} from "fs-extra";
+import fse from "fs-extra";
 
 const commandName = 'tpl';
 
@@ -14,15 +13,15 @@ export async function newTemplate(template: string) {
 
   console.log('templatePath ->', templatePath);
 
-  if (!await pathExists(templatePath)) {
+  if (!await fse.pathExists(templatePath)) {
     L(chalk.green(`新建模板: ${template}`));
 
     const manifestPath = path.join(templatePath, 'manifest.json');
 
-    await ensureFile(manifestPath);
+    await fse.ensureFile(manifestPath);
 
-    await writeJson(manifestPath, {name: template, version: '1'});
+    await fse.writeJson(manifestPath, {name: template, version: '1'});
   } else {
-    L(red.bold(`模板 ${template} 已经存在`));
+    L(chalk.red.bold(`模板 ${template} 已经存在`));
   }
 }

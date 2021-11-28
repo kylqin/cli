@@ -1,9 +1,10 @@
 import {program} from "commander";
 
-import {tplInitial} from '@/tpl/commands/tplInitial';
-import {touchConf} from '@/tpl/commands/touchConf';
-import {newTemplate} from '@/tpl/commands/newTemplate';
-import {generate} from '@/tpl/commands/generate';
+import {tplInitial} from '@/tpl/commands/tplInitial.js';
+import {touchConf} from '@/tpl/commands/touchConf.js';
+import {newTemplate} from '@/tpl/commands/newTemplate.js';
+import {editTemplate} from '@/tpl/commands/editTemplate.js';
+import {generate} from '@/tpl/commands/generate.js';
 
 program
   .command('init')
@@ -19,12 +20,17 @@ program
 program
   .command('new <template>')
   .description('新建一个模板')
-  .action(newTemplate)
+  .action(newTemplate);
+
+program
+  .command('edit <template>')
+  .description('编辑模板')
+  .action(editTemplate);
 
 program
   .command('g <template>')
   .description('从模板生成')
-  .action(generate)
+  .action(generate);
 
 
 program.parse();

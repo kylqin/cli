@@ -1,6 +1,6 @@
 import Conf from "conf";
 import * as chalk from "chalk";
-import {L} from "@/utils/log";
+import {L} from "@/utils/log.js";
 
 const conf = new Conf();
 
@@ -10,7 +10,7 @@ export interface TodoItem {
 }
 
 export function list() {
-  const todoList = conf.get('todo-list') as (TodoItem[] | undefined);
+  const todoList = conf.get('todo.js-list') as (TodoItem[] | undefined);
 
   if (todoList && todoList.length) {
     L(chalk.blue.bold('Tasks in green are done. Tasks in yellow are still not done.'))

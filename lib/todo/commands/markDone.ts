@@ -1,7 +1,7 @@
 import Conf from "conf";
-import {TodoItem} from "@/todo/commands/list";
+import {TodoItem} from "@/todo/commands/list.js";
 import * as chalk from "chalk";
-import {L} from "@/utils/log";
+import {L} from "@/utils/log.js";
 
 interface MarkDoneOptions {
   tasks: string[]
@@ -10,7 +10,7 @@ interface MarkDoneOptions {
 const conf = new Conf();
 
 export function markDone({tasks}: MarkDoneOptions) {
-  let todoList = conf.get('todo-list') as (TodoItem[] | undefined);
+  let todoList = conf.get('todo.js-list') as (TodoItem[] | undefined);
 
   if (todoList) {
     todoList = todoList.map((task, index) => {
@@ -24,7 +24,7 @@ export function markDone({tasks}: MarkDoneOptions) {
       return task;
     });
 
-    conf.set('todo-list', todoList);
+    conf.set('todo.js-list', todoList);
   }
 
   L(chalk.green.bold('Tasks have been marked done successfully!'));

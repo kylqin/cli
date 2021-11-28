@@ -1,12 +1,12 @@
-import {confFileExists, confFilePath, ensureConfFile, readConf, writeConf} from "@/utils/conf";
-import {green} from "chalk";
+import {confFileExists, confFilePath, ensureConfFile, readConf, writeConf} from "@/utils/conf.js";
+import chalk from "chalk";
 import * as os from "os";
 import {ensureDir, pathExists} from "fs-extra";
 import * as path from "path";
 import * as inquirer from "inquirer";
 import {Question} from "inquirer";
-import {L} from "@/utils/log";
-import untildify = require("untildify");
+import {L} from "@/utils/log.js";
+import untildify from "untildify";
 
 interface TplInitialOptions {
   templateLib?: string
@@ -28,7 +28,7 @@ export async function tplInitial(options: TplInitialOptions) {
 
   /// 创建 conf 文件
   if (!await confFileExists(commandName)) {
-    L(green(`Creating tpl config file: ${confPath}...`));
+    L(chalk.green(`Creating tpl config file: ${confPath}...`));
     await ensureConfFile(commandName);
 
     await writeConf(commandName, {version: '1', templateLib: opts.templateLib!})
@@ -38,7 +38,7 @@ export async function tplInitial(options: TplInitialOptions) {
   cnf.templateLib = untildify(cnf.templateLib);
 
   if (!await pathExists(cnf.templateLib)) {
-    L(green(`Creating tpl template lib directory: ${cnf.templateLib}...`));
+    L(chalk.green(`Creating tpl template lib directory: ${cnf.templateLib}...`));
 
     await ensureDir(path.join(cnf.templateLib, 'templates'));
   }
