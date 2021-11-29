@@ -5,21 +5,19 @@ import {ensureDir, pathExists} from "fs-extra";
 import * as path from "path";
 import * as inquirer from "inquirer";
 import {Question} from "inquirer";
+import {useCmd} from "@/utils/di";
 import {L} from "@/utils/log";
+import {TplConf} from "@/tpl/types";
+import {templatesDirPath} from "@/tpl/conf-template";
 import untildify = require("untildify");
 
 interface TplInitialOptions {
   templateLib?: string
 }
 
-export interface TplConf {
-  version: '1',
-  templateLib: string
-}
-
-const commandName = 'tpl';
-
 export async function tplInitial(options: TplInitialOptions) {
+  const commandName = useCmd();
+
   // console.log('options ->', options)
   const opts = await processOptions(options)
   // console.log('opts ->', opts)
@@ -40,7 +38,7 @@ export async function tplInitial(options: TplInitialOptions) {
   if (!await pathExists(cnf.templateLib)) {
     L(green(`Creating tpl template lib directory: ${cnf.templateLib}...`));
 
-    await ensureDir(path.join(cnf.templateLib, 'templates'));
+    await ensureDir(templatesDirPath(cnf.templateLib));
   }
 }
 

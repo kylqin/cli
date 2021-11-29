@@ -1,26 +1,26 @@
-import * as chalk from "chalk";
-import {red} from "chalk";
+import {green, red} from "chalk";
+import {ensureFile, pathExists, writeJson} from "fs-extra";
 import {L} from "@/utils/log";
 import {readConf} from "@/utils/conf";
-import {TplConf} from "@/tpl/commands/tplInitial";
-import * as path from "path";
-import {ensureFile, pathExists, writeJson} from "fs-extra";
-import {templateManifestPathInLib} from "../conf-template";
+import {TplConf, TplManifest} from "@/tpl/types";
+import {templateManifestPathInLib, templatePath} from "@/tpl/conf-template";
 
 const commandName = 'tpl';
 
 export async function newTemplate(template: string) {
   const cnf = await readConf(commandName) as TplConf;
-  const templatePath = path.join(cnf.templateLib, template)
+  const tplPath = templatePath(cnf.templateLib, template)
 
-  if (!await pathExists(templatePath)) {
-    L(chalk.green(`新建模板: ${template}`));
+  if (!await pathExists(tplPath)) {
+    L(green(`新建模板: ${template}`));
 
     const manifestPath = templateManifestPathInLib(cnf.templateLib, template);
 
     await ensureFile(manifestPath);
 
-    await writeJson(manifestPath, {name: template, version: '1'});
+    const defaultManifest: TplManifest = {name: template, version: '1', cloneType: 'files'};
+
+    await writeJson(manifestPath, defaultManifest);
   } else {
     L(red.bold(`模板 ${template} 已经存在`));
   }

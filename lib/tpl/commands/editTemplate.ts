@@ -1,17 +1,16 @@
 import {green, red} from "chalk";
-import * as path from "path";
 import {ensureFile, pathExists} from "fs-extra";
 import execa from "execa";
 import {useCnf} from "@/utils/di";
 import {L} from "@/utils/log";
-import {templateManifestPathInLib} from "@/tpl/conf-template";
-import {TplConf} from "@/tpl/commands/tplInitial";
+import {TplConf} from "@/tpl/types";
+import {templateManifestPathInLib, templatePath} from "@/tpl/conf-template";
 
 export async function editTemplate(template: string) {
   const cnf = useCnf<TplConf>();
-  const templatePath = path.join(cnf.templateLib, template)
+  const tplPath = templatePath(cnf.templateLib, template)
 
-  if (await pathExists(templatePath)) {
+  if (await pathExists(tplPath)) {
     L(green(`新建模板: ${template}`));
 
     const manifestPath = templateManifestPathInLib(cnf.templateLib, template);
